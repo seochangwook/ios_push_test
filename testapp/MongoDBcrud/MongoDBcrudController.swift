@@ -13,7 +13,7 @@ import Kingfisher
 
 class MongoDBcrudController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //서버의 ip주소와 포트번호//
-    var server_ip_address:String = "172.30.1.3"
+    var server_ip_address:String = "172.30.1.60"
     var server_port_number = "3000"
     
     //데이터 배열//

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var point = 0;
     
     //서버의 ip주소와 포트번호//
-    var server_ip_address:String = "172.30.1.54"
+    var server_ip_address:String = "172.30.1.60"
     var server_port_number = "8000"
     
     @IBOutlet weak var pointlabel: UILabel!
@@ -41,6 +41,8 @@ class ViewController: UIViewController {
         print("viewDidAppear()");
         
         testimageview.image = UIImage(named: "Resource/no_image.png"); //아마자 설정(경로 정확히 설정)//
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0 //해당 페이지로 들어오면 알림 배지를 초기화//
     }
 
     override func didReceiveMemoryWarning() {
