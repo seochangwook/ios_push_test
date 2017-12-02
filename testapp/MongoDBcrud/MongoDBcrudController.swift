@@ -82,7 +82,8 @@ class MongoDBcrudController: UIViewController, UITableViewDataSource, UITableVie
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:MemberTableViewCell = self.memberlist.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! MemberTableViewCell
+        var cell:MemberTableViewCell = self.memberlist.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! MemberTableViewCell
+        
         let row = indexPath.row;
         
         cell.membername?.text = self.filteredData[row];
@@ -94,6 +95,16 @@ class MongoDBcrudController: UIViewController, UITableViewDataSource, UITableVie
         let processor = RoundCornerImageProcessor(cornerRadius: 80) //이미지 변형(동그랗게 자르기)//
         
         cell.memberimage.kf.setImage(with: url, options: [.processor(processor)]);
+        
+        //TableView Badge - 데이터를 받아올 시 특수 경우에 대해서는 배지처리//
+        if(self.filteredData[row] == "admin3"){
+            cell.badgeString = "success"
+        } else if(self.filteredData[row] == "admin4"){
+            cell.badgeColor = .lightGray
+            cell.badgeString = "fail"
+            cell.badgeTextColor = .black;
+            cell.accessoryType = .detailButton
+        }
         
         return cell;
     }
@@ -245,7 +256,7 @@ class MongoDBcrudController: UIViewController, UITableViewDataSource, UITableVie
         segue_id = segue.identifier!
         
         //identifier값으로 비교한다.//
-        print("segue id : [",segue_id+"] id")
+        print("segue id : [ "+segue_id+" ] id")
         
         //스토리보드의 id값을 가지고 이동할 스토리보드를 선택한다.//
         if(segue_id == "memberdetailinfoview")

@@ -1,32 +1,17 @@
 //
-//  MemberTableViewCell.swift
-//  testapp
+//  TDBadgedCell.swift
+//  TDBadgedCell
 //
-//  Created by seo on 2017. 11. 12..
-//  Copyright © 2017년 seo. All rights reserved.
+//  Created by Tim Davies on 07/09/2016.
+//  Copyright © 2016 Tim Davies. All rights reserved.
 //
-
-import Foundation
 import UIKit
 
-class MemberTableViewCell : UITableViewCell{
-    //셀에 적용될 위젯들을 정의한다.//
-    @IBOutlet weak var memberimage: UIImageView!
-    @IBOutlet weak var membername: UILabel!
-    @IBOutlet weak var memberrole: UILabel!
-    @IBOutlet weak var movebutton: UIButton!
+/// TDBadgedCell is a table view cell class that adds a badge, similar to the badges in Apple's own apps
+/// The badge is generated as image data and drawn as a sub view to the table view sell. This is hopefully
+/// most resource effective that a manual draw(rect:) call would be
+open class TDBadgedCell: UITableViewCell {
     
-    override func awakeFromNib() {
-        super.awakeFromNib();
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated);
-        
-        drawBadge()
-    }
-    
-    //Table Badge//
     /// Badge value
     public var badgeString : String = "" {
         didSet {
@@ -84,6 +69,11 @@ class MemberTableViewCell : UITableViewCell{
     // When the badge
     override open func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
+        drawBadge()
+    }
+    
+    override open func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
         drawBadge()
     }
     
