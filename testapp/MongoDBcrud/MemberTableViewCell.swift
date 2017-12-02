@@ -14,6 +14,7 @@ class MemberTableViewCell : UITableViewCell{
     @IBOutlet weak var memberimage: UIImageView!
     @IBOutlet weak var membername: UILabel!
     @IBOutlet weak var memberrole: UILabel!
+    @IBOutlet weak var movebutton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib();
